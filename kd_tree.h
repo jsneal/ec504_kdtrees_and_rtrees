@@ -1,16 +1,6 @@
 #include<stdio.h>
+#include"node.h"
 
-struct Node {
-
-    // "Feature Vector"
-    int *coordinates;
-
-    // Left Child
-    Node *lo_child;
-
-    // Right Child
-    Node *hi_child;
-};
 
 class kd_tree{
 public:
@@ -18,7 +8,10 @@ public:
     kd_tree();
     
     // constructs a one node empty kd tree
-    kd_tree(int* array, int dim);
+    // kd_tree(int* array, int dim);
+
+    // constructs a no node kd_tree with d = dim;
+    kd_tree(int dim);
 
     void print_kd();
 
@@ -26,7 +19,7 @@ public:
 
     void delete_node(int* array);
 
-    void find_node(int* array);
+    Node* find_node(int* array);
 
 private:
 

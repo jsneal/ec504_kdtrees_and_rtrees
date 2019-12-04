@@ -4,8 +4,8 @@
 TARGET	=  main
 
 C_SOURCES =  main.cpp
-C_OBJS     =  main.o kd_tree.o
-MY_INCLUDES = kd_tree.cpp
+C_OBJS     =  main.o kd_tree.o node.o
+MY_INCLUDES = kd_tree.cpp node.cpp
 # merg.h
 
 
@@ -14,7 +14,7 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) # run_handwritten_tests
+all: $(TARGET) run_simple_test # run_handwritten_tests
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<  
@@ -40,6 +40,9 @@ tar: $(ALL_SOURCES) $(NOTES)
 
 $(TARGET).ps: $(ALL SOURCES)
 	enscript -pcode.ps $(ALL_SOURCES)
+
+run_simple_test:
+	./$(TARGET) simple_2d_test.txt
 
 # run_handwritten_tests:
 # 	for file in Handwritten_Test_Cases/*.txt; \
