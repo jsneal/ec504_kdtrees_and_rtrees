@@ -13,7 +13,7 @@ public:
     // constructs a no node kd_tree with d = dim;
     kd_tree(int dim);
 
-    void print_kd();
+    void print_node(Node* a);
 
     void insert_node(int* array);
 

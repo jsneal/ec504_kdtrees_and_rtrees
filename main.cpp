@@ -1,6 +1,4 @@
 #include "kd_tree.h"
-#include <stdio.h>
-#include <iostream>
 
 using namespace std;
 
@@ -38,6 +36,11 @@ int main(int argc, char *argv[]) {
     }
 
 
+    tree_1.print_node(tree_1.root);
+    cout << "lo_child: "; tree_1.print_node(tree_1.root->lo_child); cout << endl;
+    cout << "hi_child of lo_child: "; tree_1.print_node(tree_1.root->lo_child->hi_child); cout << endl;
+    cout << "hi_child: "; tree_1.print_node(tree_1.root->hi_child); cout << endl;
+    cout << "hi_child of hi_child: "; tree_1.print_node(tree_1.root->hi_child->hi_child); cout << endl;
 
     // int array[4] = {1, 2, 3, 4};
 

@@ -24,9 +24,9 @@ kd_tree::kd_tree(int dim) {
 
 }
 
-void kd_tree::print_kd() {
+void kd_tree::print_node(Node* a) {
     for (int i = 0; i < d; i++)
-        printf("%d ", root->coordinates[i]);
+        printf("%d ", a->coordinates[i]);
     printf("\n");
     return;
 }
@@ -34,25 +34,27 @@ void kd_tree::print_kd() {
 void kd_tree::insert_node(int* array) {
     printf("Insert\n");
     // true set for insert function
-    Node* Q = insert_or_find_node(root, array, d, true, d);
+    Node* Q = insert_or_find_node(root, array, d, true, d-1);
+    root = Q;
 
     if (Q == nullptr)
         printf("Should not get a nullptr for insert");
-
-    root = Q;
 
     return;
 }
 
 void kd_tree::delete_node(int* array) {
     printf("Delete\n");
+    // Node* Q = insert_or_find_node(root, array, d, false, d);
+    // if 
+
     return;
 }
 
 Node* kd_tree::find_node(int* array) {
-    printf("Found Node\n");
+    printf("Find Node\n");
 
-    Node* Q = insert_or_find_node(root, array, d, true, d);
+    Node* Q = insert_or_find_node(root, array, d, false, d-1);
 
     return Q;
 }
