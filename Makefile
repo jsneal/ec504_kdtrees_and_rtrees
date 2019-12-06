@@ -42,7 +42,7 @@ $(TARGET).ps: $(ALL SOURCES)
 	enscript -pcode.ps $(ALL_SOURCES)
 
 run_simple_test:
-	./$(TARGET) simple_2d_test.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt
 
 # run_handwritten_tests:
 # 	for file in Handwritten_Test_Cases/*.txt; \
