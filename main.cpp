@@ -1,6 +1,5 @@
 #include "kd_tree.h"
 
-using namespace std;
 
 // Read-In Code based off of HW5 code
 int main(int argc, char *argv[]) {
@@ -35,7 +34,9 @@ int main(int argc, char *argv[]) {
         tree_1.insert_node(point);
     }
 
-
+    int a[2] = {5, 8};
+    tree_1.delete_node(a);
+    cout << "After Deletion" << endl;
     tree_1.print_node(tree_1.root);
     cout << "lo_child: "; tree_1.print_node(tree_1.root->lo_child); cout << endl;
     cout << "hi_child of lo_child: "; tree_1.print_node(tree_1.root->lo_child->hi_child); cout << endl;
