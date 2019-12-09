@@ -37,6 +37,7 @@ void kd_tree::print_node(Node* a) {
 
 void kd_tree::insert_node(int* array) {
     printf("Insert\n");
+    cout << array[0] << ", " << array[1] << endl;
     // true set for insert function
     Node* Q = insert_or_find_node(root, array, d, true, d-1);
     root = Q;
@@ -51,11 +52,18 @@ void kd_tree::delete_node(int* array) {
     printf("Delete\n");
     cout << array[0] << ", " << array[1] << endl;
     Node* Parent_P = insert_or_find_node(root, array, d, false, d);
+    // cout << "Node Found" << endl;
     Node* P;
     bool equal_coordinates = true;
     bool is_hi_child = false;
-    cout << "which child" << endl;
+    // cout << "which child" << endl;
+    if (Parent_P == nullptr) {
+        cout << "Node not found!" << endl;
+        return;
+    }
+
     if (Parent_P->hi_child != nullptr) {
+        // cout << "Parent_P->hi_child != nullptr " << (Parent_P->hi_child != nullptr) << endl;
         for (int i = 0; i < d; i++) {
             if (Parent_P->hi_child->coordinates[i] != array[i])
                 equal_coordinates = false;
@@ -67,6 +75,7 @@ void kd_tree::delete_node(int* array) {
     }
 
     if (Parent_P->lo_child != nullptr) {
+        // cout << "Parent_P->lo_child != nullptr " << (Parent_P->lo_child != nullptr) << endl;
         equal_coordinates = true;
         for (int i = 0; i < d; i++) {
             if (Parent_P->lo_child->coordinates[i] != array[i])
@@ -79,24 +88,31 @@ void kd_tree::delete_node(int* array) {
     }
 
     if (Parent_P == root) {
+        // cout << "Parent_P == root " << (Parent_P == root) << endl;
         equal_coordinates = true;
         for (int i = 0; i < d; i++) {
             if (Parent_P->coordinates[i] != array[i])
                 equal_coordinates = false;
         }
         if (equal_coordinates) {
+            // cout << "removing node" << endl;
             P = remove_node(root);
             root = P;
+            cout << "delete complete" << endl;
             return;
         }
     }
 
     // cout << P->coordinates[0] << ", " << P->coordinates[1] << endl;
-    if (is_hi_child)
+    if (is_hi_child) {
+        // cout << "removing node" << endl;
         Parent_P->hi_child = remove_node(P);
-    else
+    }
+    else {
+        // cout << "removing node" << endl;
         Parent_P->lo_child = remove_node(P);
-    
+    }
+    cout << "delete complete" << endl;
     return;
 }
 
