@@ -64,53 +64,28 @@ int main(int argc, char *argv[]) {
     // }
 
 // Delete from root works
-        // for (int i = 0; i < 100; i++) {
-        //     tree_1.delete_node(tree_1.root->coordinates);
-        // }
+    // for (int i = 0; i < 100; i++) {
+    //         tree_1.delete_node(tree_1.root->coordinates);
+    // }
 
+    // int a[2]; = {837, 400};
+    //tree_1.delete_node(a);
+    // a[0] = 139;
+    // a[1] = 719;
+    // tree_1.delete_node(a);
 
-    // tree_1.delete_node(points[1]);
-    // tree_1.delete_node(points[4]);
-    // tree_1.delete_node(points[12]);
-    // tree_1.delete_node(points[11]);
-    // tree_1.delete_node(points[8]);
-    // tree_1.delete_node(points[5]);
-    // tree_1.delete_node(points[6]);
-    tree_1.delete_node(points[2]);
-    Node* ab = tree_1.find_node(points[6]);
-    cout << ab->hi_child->coordinates[0] << ", " << ab->hi_child->coordinates[1] << endl;
-    Node* bc = tree_1.find_node(points[n-1]);
-    cout << bc->coordinates[0] << ", " << bc->coordinates[1] << endl;
-    cout << points[n-1][0] << ", "  << points[n-1][1] << endl;
+    // Node* ab = tree_1.find_node(a);
+    // cout << ab->DISC << endl;
+    // tree_1.print_node(ab->lo_child);
+    // a[0] = 307;
+    // a[1] = 93;
+    // tree_1.delete_node(a);
+    // a[0] = 813;
+    // a[1] = 309;
+    // tree_1.delete_node(a);
+    // a[0] = 96;
+    // a[1] = 455;
+    // tree_1.delete_node(a);
 
-    // tree_1.delete_node(points[10]);
-    // tree_1.delete_node(points[9]);
-    // tree_1.delete_node(points[0]);
-    // tree_1.delete_node(points[7]);
-    // tree_1.delete_node(points[n-1]);
-
-
-
-
-    // cout << "After Deletion" << endl;
-    // tree_1.print_node(tree_1.root);
-    // cout << "lo_child: "; tree_1.print_node(tree_1.root->lo_child); cout << endl;
-    // cout << "hi_child of lo_child: "; tree_1.print_node(tree_1.root->lo_child->hi_child); cout << endl;
-    // cout << "lo_child of lo_child: "; tree_1.print_node(tree_1.root->lo_child->lo_child); cout << endl;
-    // cout << "hi_child: "; tree_1.print_node(tree_1.root->hi_child); cout << endl;
-    // cout << "hi_child of hi_child: "; tree_1.print_node(tree_1.root->hi_child->hi_child); cout << endl;
-    // cout << "lo_child of hi_child: "; tree_1.print_node(tree_1.root->hi_child->lo_child); cout << endl;
-
-    // int array[4] = {1, 2, 3, 4};
-
-    // kd_tree a = kd_tree(array, 4);
-
-    // a.print_kd();
-
-    // a.insert_node(array);
-
-    // a.delete_node(array);
-
-    // a.find_node(array);
     return 0;
 }

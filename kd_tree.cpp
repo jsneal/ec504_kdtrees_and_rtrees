@@ -61,7 +61,7 @@ void kd_tree::delete_node(int* array) {
         cout << "Node not found!" << endl;
         return;
     }
-    cout << "Parent_P->coordinates[0] " << Parent_P->coordinates[0] << ", " << "Parent_P->coordinates[1] " << Parent_P->coordinates[1] << endl;
+    // cout << "Parent_P->coordinates[0] " << Parent_P->coordinates[0] << ", " << "Parent_P->coordinates[1] " << Parent_P->coordinates[1] << endl;
     if (Parent_P->hi_child != nullptr) {
         // cout << "Parent_P->hi_child != nullptr " << (Parent_P->hi_child != nullptr) << endl;
         for (int i = 0; i < d; i++) {
@@ -104,12 +104,12 @@ void kd_tree::delete_node(int* array) {
     }
 
     // cout << P->coordinates[0] << ", " << P->coordinates[1] << endl;
-    cout << "P->coordinates[0] " << P->coordinates[0] << ", " << "P->coordinates[1] " << P->coordinates[1] << endl;
-    cout << "is_hi_child " << is_hi_child << endl;
+    // cout << "P->coordinates[0] " << P->coordinates[0] << ", " << "P->coordinates[1] " << P->coordinates[1] << endl;
+    // cout << "is_hi_child " << is_hi_child << endl;
     if (is_hi_child) {
         // cout << "removing node" << endl;
         Parent_P->hi_child = remove_node(P);
-        cout << "Parent_P->hi_child->hi_child " << Parent_P->hi_child->hi_child->coordinates[0] << ", " << Parent_P->hi_child->hi_child->coordinates[1] << endl;
+        // cout << "Parent_P->hi_child->hi_child " << Parent_P->hi_child->hi_child->coordinates[0] << ", " << Parent_P->hi_child->hi_child->coordinates[1] << endl;
     }
     else {
         // cout << "removing node" << endl;

@@ -200,302 +200,228 @@ Insert
 Insert
 709, 622
 Delete
-737, 380
-delete complete
-Delete
-843, 155
-delete complete
-Delete
-917, 977
-delete complete
-Delete
-981, 334
-delete complete
-Delete
-981, 753
-delete complete
-Delete
-997, 937
-delete complete
-Delete
-962, 445
-delete complete
-Delete
-928, 789
-delete complete
-Delete
-953, 406
-delete complete
-Delete
-813, 309
-delete complete
-Delete
-837, 400
-delete complete
-Delete
-908, 989
-delete complete
-Delete
-895, 878
-delete complete
-Delete
-804, 357
-delete complete
-Delete
-831, 508
-delete complete
-Delete
-746, 496
-delete complete
-Delete
-770, 553
-delete complete
-Delete
-771, 314
-delete complete
-Delete
-874, 204
-delete complete
-Delete
-985, 103
-delete complete
-Delete
-782, 39
-delete complete
-Delete
-882, 155
-delete complete
-Delete
-846, 97
-delete complete
-Delete
-798, 107
-delete complete
-Delete
-980, 28
-delete complete
-Delete
-945, 1
-delete complete
-Delete
-489, 373
+125, 50
 delete complete
 Delete
 314, 565
 delete complete
 Delete
-493, 376
-delete complete
-Delete
-573, 648
-delete complete
-Delete
-690, 960
-delete complete
-Delete
-715, 982
-delete complete
-Delete
-710, 848
-delete complete
-Delete
-690, 934
-delete complete
-Delete
-682, 763
-delete complete
-Delete
-709, 622
-delete complete
-Delete
-672, 633
-delete complete
-Delete
-651, 511
+489, 802
 delete complete
 Delete
 608, 555
 delete complete
 Delete
-356, 792
-delete complete
-Delete
-373, 821
-delete complete
-Delete
-401, 973
-delete complete
-Delete
-568, 977
-delete complete
-Delete
-489, 802
-delete complete
-Delete
-572, 867
-delete complete
-Delete
-434, 956
-delete complete
-Delete
-358, 675
-delete complete
-Delete
-493, 691
-delete complete
-Delete
-435, 780
-delete complete
-Delete
-456, 758
-delete complete
-Delete
-386, 705
-delete complete
-Delete
-454, 401
-delete complete
-Delete
-542, 654
-delete complete
-Delete
-498, 549
-delete complete
-Delete
-506, 612
-delete complete
-Delete
-442, 628
-delete complete
-Delete
-409, 390
-delete complete
-Delete
-351, 534
-delete complete
-Delete
-56, 902
-delete complete
-Delete
-239, 988
-delete complete
-Delete
-108, 934
-delete complete
-Delete
 165, 984
-delete complete
+Node not found!
 Delete
-139, 719
-delete complete
-Delete
-181, 670
-delete complete
-Delete
-243, 877
-delete complete
-Delete
-295, 782
-delete complete
-Delete
-256, 794
-delete complete
-Delete
-314, 813
-delete complete
-Delete
-150, 878
-delete complete
-Delete
-292, 647
-delete complete
-Delete
-150, 474
-delete complete
-Delete
-154, 652
-delete complete
-Delete
-74, 595
-delete complete
-Delete
-53, 898
-delete complete
-Delete
-68, 375
-delete complete
-Delete
-96, 455
-delete complete
-Delete
-3, 497
-delete complete
-Delete
-12, 557
-delete complete
-Delete
-609, 188
+997, 937
 delete complete
 Delete
 679, 135
 delete complete
 Delete
-730, 274
+387, 272
 delete complete
 Delete
-659, 56
+506, 612
 delete complete
 Delete
-585, 42
+202, 18
+delete complete
+Delete
+434, 956
+delete complete
+Delete
+442, 628
+delete complete
+Delete
+53, 898
+Node not found!
+Delete
+882, 155
+delete complete
+Delete
+917, 977
+delete complete
+already deleted
+Delete
+715, 982
 delete complete
 Delete
 201, 281
 delete complete
 Delete
-482, 88
+373, 821
 delete complete
 Delete
-292, 160
+730, 274
 delete complete
 Delete
-387, 272
+256, 794
+Node not found!
+Delete
+454, 401
 delete complete
 Delete
-551, 301
+709, 622
 delete complete
 Delete
-487, 330
+746, 496
+delete complete
+already deleted
+Delete
+401, 973
 delete complete
 Delete
-307, 93
+295, 782
+Node not found!
+already deleted
+Delete
+609, 188
 delete complete
 Delete
-249, 362
+798, 107
 delete complete
 Delete
-246, 79
+690, 934
 delete complete
 Delete
-47, 171
+843, 155
 delete complete
 Delete
-28, 176
-delete complete
+895, 878
+Node not found!
 Delete
-39, 221
+651, 511
 delete complete
-Delete
-88, 276
-delete complete
-Delete
-151, 92
-delete complete
-Delete
-125, 50
-delete complete
+already deleted
 Delete
 104, 37
 delete complete
 Delete
-202, 18
+181, 670
+Node not found!
+already deleted
+Delete
+804, 357
 delete complete
+Delete
+981, 334
+delete complete
+already deleted
+already deleted
+already deleted
+already deleted
+Delete
+68, 375
+Node not found!
+already deleted
+Delete
+307, 93
+Node not found!
+already deleted
+already deleted
+Delete
+139, 719
+Node not found!
+already deleted
+already deleted
+already deleted
+already deleted
+already deleted
+Delete
+953, 406
+Node not found!
+Delete
+542, 654
+delete complete
+already deleted
+already deleted
+Delete
+239, 988
+Node not found!
+already deleted
+Delete
+831, 508
+Node not found!
+Delete
+351, 534
+delete complete
+already deleted
+Delete
+573, 648
+delete complete
+already deleted
+Delete
+585, 42
+delete complete
+Delete
+682, 763
+delete complete
+already deleted
+Delete
+493, 691
+Node not found!
+already deleted
+Delete
+846, 97
+Node not found!
+already deleted
+already deleted
+already deleted
+already deleted
+Delete
+47, 171
+delete complete
+Delete
+150, 878
+Node not found!
+Delete
+96, 455
+Node not found!
+Delete
+243, 877
+Node not found!
+already deleted
+Delete
+39, 221
+delete complete
+Delete
+770, 553
+delete complete
+Delete
+710, 848
+delete complete
+Delete
+56, 902
+delete complete
+already deleted
+Delete
+771, 314
+delete complete
+Delete
+498, 549
+Node not found!
+Delete
+487, 330
+Node not found!
+already deleted
+Delete
+292, 647
+Node not found!
+Delete
+150, 474
+Node not found!
+already deleted
+already deleted
+Delete
+435, 780
+Node not found!
+already deleted
+Delete
+782, 39
+delete complete
+already deleted
+already deleted
+already deleted

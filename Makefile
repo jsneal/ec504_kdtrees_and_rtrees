@@ -14,7 +14,7 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_less_simple_test #run_random_data_100 # run_handwritten_tests
+all: $(TARGET) run_random_data_100 #run_less_simple_test # run_handwritten_tests
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<  
