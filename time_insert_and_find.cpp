@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     }
     fscanf(fp1,"%d %d",&n,&d);
     char filename[30];
-    sprintf(filename, "%d_%d_insert_find_times.txt", n, d); 
+    sprintf(filename, "%d_%d_permuted_insert_find_times.txt", n, d); 
     of1 = fopen(filename, "a");
 
     kd_tree tree_1 = kd_tree(d);
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
     stop = chrono::steady_clock::now();
     difference_in_time = stop - start;
     difference_in_seconds_finds = double(difference_in_time.count());
-    fprintf(of1, "%f,%f\n", difference_in_seconds_build, difference_in_seconds_finds);
+    fprintf(of1, "%f %f\n", difference_in_seconds_build, difference_in_seconds_finds);
     fclose(of1);
 
 

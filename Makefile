@@ -1,10 +1,10 @@
 .SUFFIXES:
 .SUFFIXES: .o .cpp
 #============================================================
-TARGET	=  main
+TARGET	=  time_insert_and_find
 
-C_SOURCES =  main.cpp
-C_OBJS     =  main.o kd_tree.o node.o
+C_SOURCES =  time_insert_and_find.cpp
+C_OBJS     =  time_insert_and_find.o kd_tree.o node.o
 MY_INCLUDES = kd_tree.cpp node.cpp
 # merg.h
 
@@ -14,7 +14,9 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_random_data_100 #run_less_simple_test # run_handwritten_tests
+all: $(TARGET) run_make_histograms 
+	g++ -std=c++11 -o make_histograms make_histograms.cpp
+	#run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K # run_random_data_100 run_random_data_1000 run_random_data_100K  #run_less_simple_test # run_handwritten_tests
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<  
@@ -48,9 +50,37 @@ run_less_simple_test:
 	./$(TARGET) Handwritten_Test_Cases/less_simple_2d_case.txt
 
 run_random_data_100:
-	./$(TARGET) random_datasets/n_100/100_2_0.txt > out.txt
-# run_handwritten_tests:
-# 	for file in Handwritten_Test_Cases/*.txt; \
-# 	do ./$(TARGET) "$$file"; done
-# for file in random_datasets/n_100/*.txt; \
-# do ./$(TARGET) "$$file"; done
+	for file in random_datasets/n_100/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_data_1000:
+	for file in random_datasets/n_1000/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_data_100K:
+	for file in random_datasets/n_100K/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_data_1M:
+	for file in random_datasets/n_1M/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_perm_data_100:
+	for file in random_dataset_permuted/n_100/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_perm_data_1000:
+	for file in random_dataset_permuted/n_1000/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_perm_data_100K:
+	for file in random_dataset_permuted/n_100K/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_random_perm_data_1M:
+	for file in random_dataset_permuted/n_1M/*.txt; \
+	do ./$(TARGET) "$$file"; done
+
+run_make_histograms:
+	for file in 1*.txt; \
+	do ./make_histograms "$$file"; done
