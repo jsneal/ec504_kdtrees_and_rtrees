@@ -1,0 +1,86 @@
+Delete
+95, 100
+Current Node: 100, 100
+Current Node: 95, 100
+delete complete
+Delete
+95, 105
+Current Node: 100, 100
+Current Node: 95, 105
+delete complete
+Delete
+110, 95
+Current Node: 100, 100
+Current Node: 105, 100
+Current Node: 105, 95
+Current Node: 110, 95
+delete complete
+Delete
+104, 95
+Current Node: 100, 100
+Current Node: 105, 100
+Current Node: 105, 95
+Current Node: 104, 95
+delete complete
+Delete
+95, 96
+Current Node: 100, 100
+Current Node: 90, 105
+Current Node: 95, 95
+Current Node: 90, 95
+Current Node: 95, 96
+delete complete
+already deleted
+Delete
+105, 95
+Current Node: 100, 100
+Current Node: 105, 100
+Current Node: 105, 95
+delete complete
+Delete
+105, 105
+Current Node: 100, 100
+Current Node: 105, 100
+Current Node: 105, 105
+delete complete
+Delete
+105, 100
+Current Node: 100, 100
+Current Node: 105, 100
+delete complete
+Delete
+95, 106
+Current Node: 100, 100
+Current Node: 90, 105
+Current Node: 95, 106
+delete complete
+Delete
+90, 105
+Current Node: 100, 100
+Current Node: 90, 105
+delete complete
+already deleted
+Delete
+100, 100
+Current Node: 100, 100
+delete complete
+already deleted
+already deleted
+Delete
+90, 95
+Current Node: 110, 105
+Current Node: 95, 95
+Current Node: 90, 95
+delete complete
+Delete
+104, 105
+Current Node: 110, 105
+Current Node: 95, 95
+Node not found!
+already deleted
+already deleted
+Delete
+95, 95
+Current Node: 110, 105
+Current Node: 95, 95
+delete complete

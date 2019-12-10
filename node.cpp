@@ -30,7 +30,7 @@ Node* insert_or_find_node(Node* Q, int* point, int d, bool insert, int disc) {
             return Q;
         }
     }
-    // cout << "Q != nullptr " << (Q != nullptr) << endl;
+    cout << "Current Node: " <<  Q->coordinates[0] << ", " << Q->coordinates[1] << endl;
 
     for (int i = 0; i < d; i++) {
         if (point[i] != Q->coordinates[i]) {
@@ -109,7 +109,7 @@ Node* insert_or_find_node(Node* Q, int* point, int d, bool insert, int disc) {
 void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node* best_min_node_parent, bool* is_hi, int j_disc) {
 
     // Node* best_min_node;
-    // cout << "in find_min_key" << endl;
+    cout << "in find_min_key" << endl;
     // cout << "is_hi " << *is_hi << endl;
 
     if (*is_hi) {
@@ -123,7 +123,7 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
     // cout << Q->coordinates[0] << endl;
     // Q being a j_disc node guarantees the best min node cannot be found in subtree(Q->hi_child)
     if (Q->DISC == j_disc) {
-        // cout << "Q is j_disc" << endl;
+        cout << "Q is j_disc" << endl;
         // cout << best_min_node->coordinates[j_disc] << endl;
         // New best_min_node is Q
         if (Q->coordinates[j_disc] < best_min_node->coordinates[j_disc]) {
@@ -149,7 +149,7 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
     }
     // Q not being a j_disc node means the best_min_node could be found either subtree
     else {
-        // cout << "Q is not j_disc" << endl;
+        cout << "Q is not j_disc" << endl;
         // New best_min_node is Q
         if (Q->coordinates[j_disc] < best_min_node->coordinates[j_disc]) {
             // cout << "Q:" << Q << endl;
@@ -215,7 +215,7 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
 Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node* best_max_node_parent, bool* is_hi, int j_disc) {
   
     // Node* best_max_node;
-    // cout << "in find_max_key" << endl;
+    cout << "in find_max_key" << endl;
     if (*is_hi)
         best_max_node = best_max_node_parent->hi_child;
     else
@@ -301,13 +301,15 @@ Node* remove_node(Node* P) {
     Node* Parent_Q = new Node;
     Node* Q = new Node;
     bool is_hi_child;
-    // cout << "P: " << P->coordinates[0] << ", " << P->coordinates[1] << endl;
+    cout << "remove_node" << endl;
+    cout << "P: " << P->coordinates[0] << ", " << P->coordinates[1] << endl;
     // Edge Case: P is NULL
     if (P == nullptr) {
         return nullptr;
     }
 
      int j_disc = P->DISC;
+     cout << "j_disc " << j_disc << endl;
 
     // D.1: P is a leaf
     if ((P->hi_child == nullptr) &&  (P->lo_child == nullptr)) {
@@ -316,7 +318,7 @@ Node* remove_node(Node* P) {
         P = nullptr;
         return P;
     }
-
+    cout << P->coordinates[0] << ", " << P->coordinates[1] << endl;
     Parent_Q = P;
     // D.2: Finding root of P's successors
     if (P->hi_child == nullptr) {
@@ -327,6 +329,7 @@ Node* remove_node(Node* P) {
     } else {
         is_hi_child = true;
         Q = P->hi_child;
+        cout << "Q = P->hi_child" << endl;
         // D.3: Get root of P's successors from P->hi_child subtree
         find_min_key_in_subtree(P->hi_child, Parent_Q, Q, Parent_Q, &is_hi_child, j_disc);
 

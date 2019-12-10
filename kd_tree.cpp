@@ -61,7 +61,7 @@ void kd_tree::delete_node(int* array) {
         cout << "Node not found!" << endl;
         return;
     }
-
+    cout << "Parent_P->coordinates[0] " << Parent_P->coordinates[0] << ", " << "Parent_P->coordinates[1] " << Parent_P->coordinates[1] << endl;
     if (Parent_P->hi_child != nullptr) {
         // cout << "Parent_P->hi_child != nullptr " << (Parent_P->hi_child != nullptr) << endl;
         for (int i = 0; i < d; i++) {
@@ -95,7 +95,7 @@ void kd_tree::delete_node(int* array) {
                 equal_coordinates = false;
         }
         if (equal_coordinates) {
-            // cout << "removing node" << endl;
+            cout << "removing root" << endl;
             P = remove_node(root);
             root = P;
             cout << "delete complete" << endl;
@@ -104,9 +104,12 @@ void kd_tree::delete_node(int* array) {
     }
 
     // cout << P->coordinates[0] << ", " << P->coordinates[1] << endl;
+    cout << "P->coordinates[0] " << P->coordinates[0] << ", " << "P->coordinates[1] " << P->coordinates[1] << endl;
+    cout << "is_hi_child " << is_hi_child << endl;
     if (is_hi_child) {
         // cout << "removing node" << endl;
         Parent_P->hi_child = remove_node(P);
+        cout << "Parent_P->hi_child->hi_child " << Parent_P->hi_child->hi_child->coordinates[0] << ", " << Parent_P->hi_child->hi_child->coordinates[1] << endl;
     }
     else {
         // cout << "removing node" << endl;
@@ -118,31 +121,42 @@ void kd_tree::delete_node(int* array) {
 
 Node* kd_tree::find_node(int* array) {
     printf("Find Node\n");
-
+    cout << array[0] << ", " << array[1] << endl;
     Node* Parent_Q = insert_or_find_node(root, array, d, false, d-1);
+
+    if (Parent_Q == nullptr) {
+        cout << "Node not found!" << endl;
+        return nullptr;
+    }
+
     Node* Q;
     bool equal_coordinates = true;
     bool is_hi_child;
 
-    for (int i = 0; i < d; i++) {
-        if (Parent_Q->hi_child->coordinates[i] != array[i])
-            equal_coordinates = false;
-    }
-    if (equal_coordinates) {
-        Q = Parent_Q->hi_child;
-        is_hi_child = true;
+    if (Parent_Q->hi_child != nullptr) {
+        for (int i = 0; i < d; i++) {
+            if (Parent_Q->hi_child->coordinates[i] != array[i])
+                equal_coordinates = false;
+        }
+
+        if (equal_coordinates) {
+            Q = Parent_Q->hi_child;
+            is_hi_child = true;
+        }
     }
 
-    equal_coordinates = true;
-    for (int i = 0; i < d; i++) {
-        if (Parent_Q->lo_child->coordinates[i] != array[i])
-            equal_coordinates = false;
-    }
-    if (equal_coordinates) {
-        Q = Parent_Q->lo_child;
-        is_hi_child = false;
-    }
+    if (Parent_Q->lo_child != nullptr) {
+        equal_coordinates = true;
+        for (int i = 0; i < d; i++) {
+            if (Parent_Q->lo_child->coordinates[i] != array[i])
+                equal_coordinates = false;
+        }
 
+        if (equal_coordinates) {
+            Q = Parent_Q->lo_child;
+            is_hi_child = false;
+        }
+    }
 
     return Q;
 }

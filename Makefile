@@ -14,7 +14,7 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_random_data_100 #run_simple_test # run_handwritten_tests
+all: $(TARGET) run_less_simple_test #run_random_data_100 # run_handwritten_tests
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<  
@@ -43,6 +43,9 @@ $(TARGET).ps: $(ALL SOURCES)
 
 run_simple_test:
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt
+
+run_less_simple_test:
+	./$(TARGET) Handwritten_Test_Cases/less_simple_2d_case.txt
 
 run_random_data_100:
 	./$(TARGET) random_datasets/n_100/100_2_0.txt > out.txt
