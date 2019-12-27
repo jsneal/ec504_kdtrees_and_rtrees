@@ -1,33 +1,35 @@
-#include<stdio.h>
-#include"node.h"
+#include <stdio.h>
+#include "node.h"
 
 
 class kd_tree{
 public:
-    // constructs empty kd tree
+    /* Constructs empty kd tree with d = 1 */
     kd_tree();
-    
-    // constructs a one node empty kd tree
-    // kd_tree(int* array, int dim);
 
-    // constructs a no node kd_tree with d = dim;
+    /* Constructs an empty node kd_tree with d = dim */
     kd_tree(int dim);
 
+    /* Prints the coordinates of a node given a pointer to that node */
     void print_node(Node* a);
 
+    /* Inserts a node into the kd-tree starting at the root */
     void insert_node(int* array);
 
+    /* Deletes a node in the kd-tree */
     void delete_node(int* array);
 
-    Node* find_node(int* array);
+    /* Performs an exact match query for a node in the kd-tree */
+    Node* exact_match_query(int* array);
 
 private:
 
 
     
 public:
-    // dimension of the coordinates of each node
+    /* Dimension of the coordinates of each node */
     int d;
-    Node *root;
+    /* Pointer to the root node of the kd-tree */
+    Node* root;
 
 };
