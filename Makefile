@@ -14,7 +14,7 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_simple_test # run_less_simple_test # run_random_data_100
+all: $(TARGET) run_simple_tests run_simple_long_chain_tests
 	# To run make_histograms: run_make_histograms 
 	# g++ -std=c++11 -o make_histograms make_histograms.cpp
 	#run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K # run_random_data_100 run_random_data_1000 run_random_data_100K  #run_less_simple_test # run_handwritten_tests
@@ -44,13 +44,20 @@ tar: $(ALL_SOURCES) $(NOTES)
 $(TARGET).ps: $(ALL SOURCES)
 	enscript -pcode.ps $(ALL_SOURCES)
 
-run_simple_test:
+run_simple_tests:
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_root.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_leaves.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_intermediates.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/null_right_subtree.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/null_left_subtree.txt
 
+# Only changed deletion test is null_left_subtree with a "Find 4 2" to make sure this was not lost.
+run_simple_long_chain_tests:
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_root.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_leaves.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_intermediates.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_right_subtree.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_left_subtree.txt
 
 run_less_simple_test:
 	./$(TARGET) Handwritten_Test_Cases/less_simple_2d_case.txt

@@ -90,12 +90,13 @@ void kd_tree::delete_node(int* array) {
         }
         /* root removal case */
         if (equal_coordinates) {
+
             Parent_P = remove_node(root);
             root = Parent_P;
             if (Parent_P != nullptr) {
                 if (Parent_P->hi_child != nullptr) {
                     while (Parent_P->coordinates[0] == Parent_P->hi_child->coordinates[0]) {
-                        // cout << endl << "in special loop" << endl;
+                        cout << endl << "in special loop" << endl;
                         cout << endl;
                         Node* tied_node = new Node;
                         tied_node = Parent_P->hi_child;
@@ -104,6 +105,8 @@ void kd_tree::delete_node(int* array) {
                         // cout << "Parent_P->hi_child: " << Parent_P->hi_child->coordinates[0] << ", " << Parent_P->hi_child->coordinates[1] << endl;
                         Parent_P = insert_or_find_node(root, tied_node->coordinates, d, true, 1);
                         root = Parent_P;
+                        if (Parent_P->hi_child == nullptr)
+                            break;
                     }
                 }
             }
