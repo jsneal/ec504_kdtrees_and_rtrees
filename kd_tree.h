@@ -19,6 +19,9 @@ public:
     /* Deletes a node in the kd-tree */
     void delete_node(int* array);
 
+        /* Deletes a node in the kd-tree with O(n) complexity */
+    void new_delete_node(int* array);
+
     /* Performs an exact match query for a node in the kd-tree */
     Node* exact_match_query(int* array);
 

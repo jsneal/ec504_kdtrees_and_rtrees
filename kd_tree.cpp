@@ -1,4 +1,5 @@
 #include "kd_tree.h"
+#include <assert.h>
 
 kd_tree::kd_tree() {
     root = nullptr;
@@ -49,6 +50,7 @@ void kd_tree::delete_node(int* array) {
     /* If P is not found */
     if (Parent_P == nullptr) {
         cout << "Node not found!" << endl;
+        assert(Parent_P == nullptr);
         return;
     }
     
@@ -90,9 +92,12 @@ void kd_tree::delete_node(int* array) {
         }
         /* root removal case */
         if (equal_coordinates) {
-
-            Parent_P = remove_node(root);
-            root = Parent_P;
+            if (root->lo_child == nullptr)
+                root = root->hi_child;
+            else {
+                Parent_P = remove_node(root);
+                root = Parent_P;
+            }
             // if (Parent_P != nullptr) {
             //     if (Parent_P->hi_child != nullptr) {
             //         while (Parent_P->coordinates[0] >= Parent_P->hi_child->coordinates[0]) {

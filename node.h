@@ -27,3 +27,5 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node** best_min_node, Node
 void find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node** best_max_node, Node** best_max_node_parent, bool* is_hi, int j_disc);
 
 Node* remove_node(Node* P);
+
+Node* new_remove_node(Node* P);
