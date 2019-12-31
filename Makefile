@@ -14,7 +14,7 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_simple_tests run_simple_long_chain_tests
+all: $(TARGET) run_simple_tests #run_simple_long_chain_tests run_simple_lowered_long_chain_tests # run_100_2_0_test# run_random_data_100
 	# To run make_histograms: run_make_histograms 
 	# g++ -std=c++11 -o make_histograms make_histograms.cpp
 	#run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K # run_random_data_100 run_random_data_1000 run_random_data_100K  #run_less_simple_test # run_handwritten_tests
@@ -58,6 +58,18 @@ run_simple_long_chain_tests:
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_intermediates.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_right_subtree.txt
 	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_left_subtree.txt
+
+# Deletion tests have been changed to measure the test case
+run_simple_lowered_long_chain_tests:
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_root.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/top_of_chain_then_middle_of_chain.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_leaves.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_intermediates.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/null_right_subtree.txt
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/null_left_subtree.txt
+
+run_100_2_0_test:
+	./$(TARGET) random_datasets/n_100/100_2_0.txt Random_Test_Cases/100_2_0_case.txt
 
 run_less_simple_test:
 	./$(TARGET) Handwritten_Test_Cases/less_simple_2d_case.txt

@@ -1,0 +1,8 @@
+7 2
+Delete 1 2
+Delete 4 4
+Delete 1 1
+Delete 4 1
+Delete 3 5
+Delete 5 8
+Delete 2 5

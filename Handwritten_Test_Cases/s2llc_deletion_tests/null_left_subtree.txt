@@ -1,0 +1,10 @@
+9 2
+Delete 1 1
+Delete 1 2
+Delete 2 5
+Delete 3 5
+Find 4 1
+Delete 4 1
+Delete 4 4
+Delete 5 8
+Find 4 2

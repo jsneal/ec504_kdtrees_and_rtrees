@@ -55,42 +55,46 @@ int main(int argc, char *argv[]) {
 
     /* Deletion file interface */
     actionfile =  argv[2];
-    Node* P;
-    cout << " infile  " << actionfile << endl;
-    fp2 = fopen(actionfile,"r");
-    if (fp2 == NULL) {
-      printf("Did not find deletion file \n");
-      exit(1);
-    }
-    int num_acts, dim_acts;
-    int x[dim_acts];
-    char action[7];
-    fscanf(fp2,"%d %d",&num_acts,&dim_acts);
-    for (int i = 0; i < num_acts; i++){
-        cout << endl;
-        fscanf(fp2, "%s", action);
-        for (int j = 0; j < dim_acts; j++) {
-            fscanf(fp2,"%d",&x[j]);
-            if (j < dim_acts-1)
-                fscanf(fp2, " ");
+
+    if (argv[2] == NULL) {
+      for (int i = 0; i < n; i++) {
+        int rand_i = (int) ((((float) rand())/RAND_MAX)*n);
+        if (already_deleted[rand_i] == 1) {
+            cout << "already deleted " << points[rand_i][0] << ", " << points[rand_i][1] << endl;
         }
-        if (!strcmp(action, "Delete"))
-            tree_1.delete_node(x);
-        if (!strcmp(action, "Insert"))
-            tree_1.insert_node(x);
-        if (!strcmp(action, "Find"))
-            P = tree_1.exact_match_query(x);
-        if (!strcmp(action, "Print")) {
-            P = tree_1.exact_match_query(x);
-            tree_1.print_node(P);
+        else {
+        tree_1.delete_node(points[rand_i]);
+            already_deleted[rand_i] = 1;
+        }
+      }
+    } else {
+        Node* P;
+        cout << " infile  " << actionfile << endl;
+        fp2 = fopen(actionfile,"r");
+        int num_acts, dim_acts;
+        int x[dim_acts];
+        char action[7];
+        fscanf(fp2,"%d %d",&num_acts,&dim_acts);
+        for (int i = 0; i < num_acts; i++){
+            cout << endl;
+            fscanf(fp2, "%s", action);
+            for (int j = 0; j < dim_acts; j++) {
+                fscanf(fp2,"%d",&x[j]);
+                if (j < dim_acts-1)
+                    fscanf(fp2, " ");
+            }
+            if (!strcmp(action, "Delete"))
+                tree_1.delete_node(x);
+            if (!strcmp(action, "Insert"))
+                tree_1.insert_node(x);
+            if (!strcmp(action, "Find"))
+                P = tree_1.exact_match_query(x);
+            if (!strcmp(action, "Print")) {
+                P = tree_1.exact_match_query(x);
+                tree_1.print_node(P);
+            }
         }
     }
-
-
-
-
-
-
 
     // for (int i = 0; i < n; i++) {
     //     // cout << "Exception here?" << endl;

@@ -1,6 +1,7 @@
 #include "node.h"
 
 
+
 int next_disc(int disc, int d) {
     /* 
        Inputs:
@@ -60,7 +61,6 @@ Node* insert_or_find_node(Node* Q, int* point, int d, bool insert, int disc) {
             return Q;
         }
     }
-    cout << Q->coordinates[0] << ", " << Q->coordinates[1] ;
     /* Checking if the current node's coordinates match the queried/inserted point */
     for (int i = 0; i < d; i++) {
         if (point[i] != Q->coordinates[i]) {
@@ -72,7 +72,6 @@ Node* insert_or_find_node(Node* Q, int* point, int d, bool insert, int disc) {
     if (equal_coordinates == true) {
         return Q;
     }
-    cout << " -> ";
     /* 
         To determine whether to continue search for queried/inserted node
         down right or left subtree.
@@ -125,23 +124,23 @@ Node* insert_or_find_node(Node* Q, int* point, int d, bool insert, int disc) {
 
 
 
-void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node* best_min_node_parent, bool* is_hi, int j_disc) {
-    // cout << "__find min__";
+void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node** best_min_node, Node** best_min_node_parent, bool* is_hi, int j_disc) {
+
     /* Determining if the minimum node is the hi or lo child of parent */
     if (*is_hi) {
-        best_min_node = best_min_node_parent->hi_child;
+        *best_min_node = (*best_min_node_parent)->hi_child;
     }
     else {
-        best_min_node = best_min_node_parent->lo_child;
+        *best_min_node = (*best_min_node_parent)->lo_child;
     }
 
     /* Q being a j_disc node guarantees the best min node cannot be found in Q's hi subtree */
     if (Q->DISC == j_disc) {
 
-        if (Q->coordinates[j_disc] < best_min_node->coordinates[j_disc]) {
-            best_min_node = Q;
-            best_min_node_parent = Parent_Q;
-            if (best_min_node_parent->hi_child == best_min_node)
+        if (Q->coordinates[j_disc] < (*best_min_node)->coordinates[j_disc]) {
+            *best_min_node = Q;
+            *best_min_node_parent = Parent_Q;
+            if ((*best_min_node_parent)->hi_child == *best_min_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -152,7 +151,7 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
             find_min_key_in_subtree(Q->lo_child, Q, best_min_node, best_min_node_parent, is_hi, j_disc);
         }
 
-        if (best_min_node_parent->hi_child == best_min_node)
+        if ((*best_min_node_parent)->hi_child == (*best_min_node))
             *is_hi = true;
         else
             *is_hi = false;
@@ -162,12 +161,12 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
     else {
 
         /* Q is new best max node */
-        if (Q->coordinates[j_disc] < best_min_node->coordinates[j_disc]) {
-            best_min_node = Q;
-            best_min_node_parent = Parent_Q;
+        if (Q->coordinates[j_disc] < (*best_min_node)->coordinates[j_disc]) {
+            *best_min_node = Q;
+            *best_min_node_parent = Parent_Q;
 
             
-            if (best_min_node_parent->hi_child == best_min_node)
+            if ((*best_min_node_parent)->hi_child == *best_min_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -180,7 +179,7 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
 
             find_min_key_in_subtree(Q->lo_child, Q, best_min_node, best_min_node_parent, is_hi, j_disc);
 
-            if (best_min_node_parent->hi_child == best_min_node)
+            if ((*best_min_node_parent)->hi_child == *best_min_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -188,39 +187,36 @@ void find_min_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_min_node, Node*
 
         /* Q is not a j_disc node, the best min node could also be found in Q's hi subtree */
         if (Q->hi_child != nullptr) {
-            if (Q->hi_child->coordinates[j_disc] < best_min_node->coordinates[j_disc]) {
-                find_min_key_in_subtree(Q->hi_child, Q, best_min_node, best_min_node_parent, is_hi, j_disc);
 
-                if (best_min_node_parent->hi_child == best_min_node)
-                    *is_hi = true;
-                else
-                    *is_hi = false;
-            }
+            find_min_key_in_subtree(Q->hi_child, Q, best_min_node, best_min_node_parent, is_hi, j_disc);
+
+            if ((*best_min_node_parent)->hi_child == *best_min_node)
+                *is_hi = true;
+            else
+                *is_hi = false;
         }
 
 
     }
-    // cout << "__Q: " << Q->coordinates[0] << ", " <<  Q->coordinates[1] << "__";
-    // cout << "__best_min_node: " << best_min_node->coordinates[0] << ", " << best_min_node->coordinates[1] << "__" << endl;
     return;
 }
 
-Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node* best_max_node_parent, bool* is_hi, int j_disc) {
+void find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node** best_max_node, Node** best_max_node_parent, bool* is_hi, int j_disc) {
   
     /* Determining if the maximum node is the hi or lo child of parent */
     if (*is_hi)
-        best_max_node = best_max_node_parent->hi_child;
+        *best_max_node = (*best_max_node_parent)->hi_child;
     else
-        best_max_node = best_max_node_parent->lo_child;
+        *best_max_node = (*best_max_node_parent)->lo_child;
 
     /* Q being a j_disc node guarantees the best max node cannot be found in Q's lo subtree */
     if (Q->DISC == j_disc) {
         /* Q is new best max node */
-        if (Q->coordinates[j_disc] >= best_max_node->coordinates[j_disc]) {
-            best_max_node = Q;
-            best_max_node_parent = Parent_Q;
+        if (Q->coordinates[j_disc] > (*best_max_node)->coordinates[j_disc]) {
+            *best_max_node = Q;
+            *best_max_node_parent = Parent_Q;
 
-            if (best_max_node_parent->hi_child == best_max_node)
+            if ((*best_max_node_parent)->hi_child == *best_max_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -228,11 +224,12 @@ Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node
 
         /* If Q's hi subtree exists than best max node could be found there */
         if (Q->hi_child != nullptr) {
-            best_max_node = find_max_key_in_subtree(Q->hi_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
+
+            find_max_key_in_subtree(Q->hi_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
 
         }
 
-        if (best_max_node_parent->hi_child == best_max_node)
+        if ((*best_max_node_parent)->hi_child == *best_max_node)
             *is_hi = true;
         else
             *is_hi = false;
@@ -242,11 +239,11 @@ Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node
     else {
 
         /* Q is new best max node */
-        if (Q->coordinates[j_disc] >= best_max_node->coordinates[j_disc]) {
-            best_max_node = Q;
-            best_max_node_parent = Parent_Q;
+        if (Q->coordinates[j_disc] > (*best_max_node)->coordinates[j_disc]) {
+            *best_max_node = Q;
+            *best_max_node_parent = Parent_Q;
 
-            if (best_max_node_parent->hi_child == best_max_node)
+            if ((*best_max_node_parent)->hi_child == *best_max_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -256,8 +253,9 @@ Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node
         /* Q is not a j_disc node, the best max node could be found in Q's hi subtree */
         if (Q->hi_child != nullptr) {
 
-            best_max_node = find_max_key_in_subtree(Q->hi_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
-            if (best_max_node_parent->hi_child == best_max_node)
+            find_max_key_in_subtree(Q->hi_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
+            
+            if ((*best_max_node_parent)->hi_child == *best_max_node)
                 *is_hi = true;
             else
                 *is_hi = false;
@@ -265,20 +263,20 @@ Node* find_max_key_in_subtree(Node* Q, Node* Parent_Q, Node* best_max_node, Node
 
         /* Since Q is not a j_disc node, the best max node could also be found in Q's lo subtree */
         if (Q->lo_child != nullptr) {
-            if (Q->lo_child->coordinates[j_disc] > best_max_node->coordinates[j_disc]) {
-                best_max_node = find_max_key_in_subtree(Q->lo_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
-                
-                if (best_max_node_parent->hi_child == best_max_node)
-                    *is_hi = true;
-                else
-                    *is_hi = false;
-            }
+
+            find_max_key_in_subtree(Q->lo_child, Q, best_max_node, best_max_node_parent, is_hi, j_disc);
+            
+            if ((*best_max_node_parent)->hi_child == *best_max_node)
+                *is_hi = true;
+            else
+                *is_hi = false;
+
         }
 
 
     }
 
-    return best_max_node;
+    return;
 }
 
 Node* remove_node(Node* P) {
@@ -294,9 +292,8 @@ Node* remove_node(Node* P) {
 
     */
 
-    // cout << "__REMOVE NODE__";
-    Node* Parent_Q = new Node;
-    Node* Q = new Node;
+    Node** Parent_Q = (Node**) malloc(sizeof(Node*));// = new Node;
+    Node** Q = (Node**) malloc(sizeof(Node*)); // = new Node;
     bool is_hi_child;
 
     /* If for some reason remove_node was passed a nullptr */
@@ -317,44 +314,40 @@ Node* remove_node(Node* P) {
     }
 
     /* Since P is not a leaf, finding replacement node: */
-    Parent_Q = P;
+    *Parent_Q = P;
     /* D.2: Finding root of P's replacement node */
     if (P->lo_child == nullptr) {
         /* Replacement must be in hi subtree since lo_child is NULL */
         is_hi_child = true;
-        Q = P->hi_child;
-        // cout << "_best_min_key_" << endl;
+        *Q = P->hi_child;
+
         /* D.3: Get root of replacement node from hi subtree */
-        find_min_key_in_subtree(P->hi_child, Parent_Q, Q, Parent_Q, &is_hi_child, j_disc);
+        find_min_key_in_subtree(P->hi_child, P, Q, Parent_Q, &is_hi_child, j_disc);
 
     } else {
         /* Replacement must be in lo subtree since hi_child is NULL */
         is_hi_child = false;
-        Q = P->lo_child;
-        // cout << "_best_max_key_" << endl;
+        *Q = P->lo_child;
+
         /* D.4: Get root of P's successors from P->lo_child subtree */
-        find_max_key_in_subtree(P->lo_child, Parent_Q, Q, Parent_Q, &is_hi_child, j_disc);
+        find_max_key_in_subtree(P->lo_child, P, Q, Parent_Q, &is_hi_child, j_disc);
     } 
 
     /* Need to put replacement node at its current place in the tree */
     /* (Find a replacement for it) and replace P with Q */
     /* D.5: Delete Q (recursive) */
+
     if (is_hi_child) {
-        Parent_Q->hi_child = remove_node(Q);
+        (*Parent_Q)->hi_child = remove_node(*Q);
     }
     else {
-        Parent_Q->lo_child = remove_node(Q);
+        (*Parent_Q)->lo_child = remove_node(*Q);
     }
 
     /* D.6: Make Q new root */
-    Q->DISC = j_disc;
-    Q->hi_child = P->hi_child;
-    Q->lo_child = P->lo_child;
+    (*Q)->DISC = j_disc;
+    (*Q)->hi_child = P->hi_child;
+    (*Q)->lo_child = P->lo_child;
 
-    if (Q != nullptr) {
-        // cout << "__P: " << P->coordinates[0] << ", " << P->coordinates[1] << "__";
-        // cout << "__Replacement: " << Q->coordinates[0] << ", " << Q->coordinates[1] << "__";
-    }
-
-    return Q;
+    return *Q;
 }
