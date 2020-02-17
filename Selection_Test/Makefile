@@ -6,19 +6,14 @@ TARGET	=  main
 C_SOURCES =  main.cpp
 C_OBJS     =  main.o selection_algorithms.o
 MY_INCLUDES = selection_algorithms.cpp
-# merg.h
+
 
 
 CCX = g++
 CXXFLAGS = -g -std=c++11
-# -Wall
 
 #============================================================
-all: $(TARGET) case_test 5_permuted_test 6_permuted_test 7_permuted_test no_input_file_test #8_permuted_test 9_permuted_test
-	#run_random_data_100 #\
-#run_random_data_1000 run_random_data_100K run_random_data_1M \
-#	run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K run_random_perm_data_1M
-	
+all: $(TARGET) case_test 5_permuted_test 6_permuted_test 7_permuted_test no_input_file_test	
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<
@@ -36,7 +31,9 @@ NOTES =
 
 clean:
 	rm -f $(TARGET) $(C_OBJS) core
+	rm generate_selection_test_arrays
 	rm *permuted.txt*
+	rm *.txt_out
 
 tar: $(ALL_SOURCES) $(NOTES)
 	tar cvf $(TARGET).tar $(ALL_SOURCES)  $(NOTES)
@@ -66,35 +63,3 @@ case_test:
 	g++ -std=c++11 -g -o generate_selection_test_arrays generate_selection_test_arrays.cpp
 	./generate_selection_test_arrays 7
 	./$(TARGET) 7_permuted.txt
-
-run_random_data_100:
-	for file in ../ec504_kdtrees_and_rtrees/random_datasets/n_100/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_data_1000:
-	for file in ../ec504_kdtrees_and_rtrees/random_datasets/n_1000/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_data_100K:
-	for file in ../ec504_kdtrees_and_rtrees/random_datasets/n_100K/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_data_1M:
-	for file in ../ec504_kdtrees_and_rtrees/random_datasets/n_1M/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_perm_data_100:
-	for file in ../ec504_kdtrees_and_rtrees/random_dataset_permuted/n_100/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_perm_data_1000:
-	for file in ../ec504_kdtrees_and_rtrees/random_dataset_permuted/n_1000/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_perm_data_100K:
-	for file in ../ec504_kdtrees_and_rtrees/random_dataset_permuted/n_100K/*.txt; \
-	do ./$(TARGET) "$$file"; done
-
-run_random_perm_data_1M:
-	for file in ../ec504_kdtrees_and_rtrees/random_dataset_permuted/n_1M/*.txt; \
-	do ./$(TARGET) "$$file"; done
