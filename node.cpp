@@ -292,8 +292,8 @@ Node* remove_node(Node* P) {
 
     */
 
-    Node** Parent_Q = (Node**) malloc(sizeof(Node*));// = new Node;
-    Node** Q = (Node**) malloc(sizeof(Node*)); // = new Node;
+    Node** Parent_Q = (Node**) malloc(sizeof(Node*));
+    Node** Q = (Node**) malloc(sizeof(Node*));
     bool is_hi_child;
 
     /* If for some reason remove_node was passed a nullptr */
@@ -350,61 +350,4 @@ Node* remove_node(Node* P) {
     (*Q)->lo_child = P->lo_child;
 
     return *Q;
-}
-
-Node* new_remove_node(Node* P) {
-    /* 
-       Inputs:
-       -------
-       P - pointer to node to be removed
-
-       
-       Output:
-       --------
-       Returns pointer to parent node
-
-    */
-
-    Node* Q;
-
-    /* If for some reason remove_node was passed a nullptr */
-    /* This should never happen */
-    if (P == nullptr) {
-        return nullptr;
-    }
-
-    /* Storing the discriminator of the parent node to be removed */
-    /* The replacement node cannot violate the parent's discriminator */
-    int j_disc = P->DISC;
-
-    /* P is a leaf */
-    if ((P->hi_child == nullptr) &&  (P->lo_child == nullptr)) {
-        /* Set P to NULL and no need for a replacement node */
-        P = nullptr;
-        return P;
-    }
-
-    /* Since P is not a leaf, finding replacement node: */
-    /* Finding root of P's replacement node */
-    if (P->lo_child == nullptr) {
-        /* Replacement must be in hi subtree since lo_child is NULL */
-        Q = P->hi_child;
-        P->hi_child = new_remove_node(Q);
-    } else {
-        /* Replacement must be in lo subtree since hi_child is NULL */
-        Q = P->lo_child;
-        P->lo_child = new_remove_node(Q);        
-
-
-    } 
-
-    /* Need to put replacement node at its current place in the tree */
-    /* (Find a replacement for it) and replace P with Q */
-
-    /* D.6: Make Q new root */
-    Q->DISC = j_disc;
-    Q->hi_child = P->hi_child;
-    Q->lo_child = P->lo_child;
-
-    return Q;
 }

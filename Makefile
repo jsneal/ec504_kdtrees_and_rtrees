@@ -1,3 +1,4 @@
+# This Makefile is based off of the Makefile from EC504 HW1 with Professor Brower (Fall 2019)
 .SUFFIXES:
 .SUFFIXES: .o .cpp
 #============================================================
@@ -6,7 +7,7 @@ TARGET	=  main
 C_SOURCES =  main.cpp
 C_OBJS     =  main.o kd_tree.o node.o
 MY_INCLUDES = kd_tree.cpp node.cpp
-# merg.h
+
 
 
 CCX = g++
@@ -14,10 +15,12 @@ CXXFLAGS = -g -std=c++11
 # -Wall
 
 #============================================================
-all: $(TARGET) run_simple_tests run_simple_long_chain_tests run_simple_lowered_long_chain_tests run_random_data_100 run_random_data_1000 run_random_data_100K run run_random_data_1M run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K run_random_perm_data_1M
-	# To run make_histograms: run_make_histograms 
-	# g++ -std=c++11 -o make_histograms make_histograms.cpp
-	#run_random_perm_data_100 run_random_perm_data_1000 run_random_perm_data_100K # run_random_data_100 run_random_data_1000 run_random_data_100K  #run_less_simple_test # run_handwritten_tests
+all: $(TARGET) run_simple_tests \
+run_simple_long_chain_tests \
+run_simple_lowered_long_chain_tests run_random_data_100 \
+run_random_data_1000 run_random_data_100K run run_random_data_1M \
+run_random_perm_data_100 run_random_perm_data_1000 \
+run_random_perm_data_100K run_random_perm_data_1M
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<
@@ -31,12 +34,10 @@ $(TARGET) :   $(C_OBJS)
 ALL_SOURCES = Makefile $(C_SOURCES) $(MY_INCLUDES)
 
 NOTES =
-%= otherstuff.np 
+%= otherstuff.np
 
 clean:
 	rm -f $(TARGET) $(C_OBJS) core
-#	rm *.txt_out
-#	rm Handwritten_Test_Cases/*.txt_out
 
 tar: $(ALL_SOURCES) $(NOTES)
 	tar cvf $(TARGET).tar $(ALL_SOURCES)  $(NOTES)

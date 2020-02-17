@@ -5,16 +5,16 @@ using namespace std;
 
 struct Node {
 
-    // "Feature Vector"
+    /* "Feature Vector" */
     int *coordinates;
 
-    // Left Child
+    /* Left Child */
     Node *lo_child;
 
-    // Right Child
+    /* Right Child */
     Node *hi_child;
 
-    // DISC
+    /* DISC */
     int DISC;
 };
 

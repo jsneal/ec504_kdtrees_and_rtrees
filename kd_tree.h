@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "node.h"
+#include <assert.h>
 
 
 class kd_tree{
@@ -19,7 +20,7 @@ public:
     /* Deletes a node in the kd-tree */
     void delete_node(int* array);
 
-        /* Deletes a node in the kd-tree with O(n) complexity */
+    /* Deletes a node in the kd-tree with O(n) complexity */
     void new_delete_node(int* array);
 
     /* Performs an exact match query for a node in the kd-tree */
