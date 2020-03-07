@@ -2,7 +2,7 @@
 .SUFFIXES:
 .SUFFIXES: .o .cpp
 #============================================================
-TARGET	=  main
+TARGET	=  main.out
 
 C_SOURCES =  main.cpp
 C_OBJS     =  main.o kd_tree.o node.o
