@@ -1,4 +1,5 @@
-## k-d Tree Implementation in C++
+k-d Tree Implementation in C++
+==============================
 
 This project is an implmentation of the k-d tree data structure in C++. I began the project in EC504 at Boston University, but after finishing what was necessary for that class I wanted to take the project further. This project is still in progress and is not designed with the use of others in mind, so please forgive the lack of documention and GUI.
 
