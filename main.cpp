@@ -44,7 +44,9 @@ int main(int argc, char *argv[]) {
     cout << "initialize kd_tree" << endl;
     cout << "n: " << n << " " << "d: " << d << endl;
     int point[d];
+    //////////////////////////
     int points[n][d];
+    //////////////////////////
     int already_deleted[n];
     int already_selected[n];
 
@@ -52,7 +54,9 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < n; i++){
             for (int j = 0; j < d; j++) {
                 fscanf(fp1,"%d",&point[j]);
+                //////////////////
                 points[i][j] = point[j];
+                /////////////////
 
                 if (j < d-1)
                     fscanf(fp1, " ");
@@ -65,7 +69,9 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < n; i++){
             for (int j = 0; j < d; j++) {
                 fscanf(fp1,"%d",&point[j]);
+                ////////////////////
                 points[i][j] = point[j];
+                ////////////////////
 
                 if (j < d-1)
                     fscanf(fp1, " ");
@@ -93,10 +99,14 @@ int main(int argc, char *argv[]) {
       for (int i = 0; i < n; i++) {
         int rand_i = (int) ((((float) rand())/RAND_MAX)*n);
         if (already_deleted[rand_i] == 1) {
+            ////////////////////
             cout << "already deleted " << points[rand_i][0] << ", " << points[rand_i][1] << endl;
+            ///////////////////
         }
         else {
+        //////////////
         tree_1.delete_node(points[rand_i]);
+        //////////////
             already_deleted[rand_i] = 1;
         }
       }

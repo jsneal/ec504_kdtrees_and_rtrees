@@ -3,9 +3,11 @@ k-d Tree Implementation in C++
 
 This project is an implmentation of the k-d tree data structure in C++. I began the project in EC504 at Boston University, but after finishing what was necessary for that class I wanted to take the project further. This project is still in progress and is not designed with the use of others in mind, so please forgive the lack of documention and GUI.
 
+I limited myself to the implementation where k = 2, but may expand on the future for k = k<sub>0</sub>.
+
 Goals of this project:
 ---
-- To implement the k-d tree for all positive integer inputs.
+- To implement the k-d tree for all positive integer inputs for k = 2.
 - To implement the k-d tree methods of insert, delete, find (exact match query), balance.
 - To implement both unbalanced k-d trees and balanced k-d trees.
 - To implement multiple selection algorithms for balanced insertion. These algorithms include (see CLRS textbook for algorithns):
@@ -30,7 +32,7 @@ The Selection algorithms come from the CLRS Introduction to Algorithms textbook.
 
 Currently implemented:
 ---
-- Implemented the k-d tree for all positive integer inputs.
+- Implemented the k-d tree for all positive integer inputs for k = 2.
 - Implemented the k-d tree methods of insert, delete, find (exact match query).
 - Implemented unbalanced k-d trees.
 - Implemented multiple selection algorithms.
