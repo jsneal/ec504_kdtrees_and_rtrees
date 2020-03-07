@@ -2,6 +2,7 @@
 #include <time.h>
 #include <string.h>
 #include <fstream>
+#include "Selection_Test/selection_algorithms.h"
 
 
 
@@ -12,13 +13,20 @@ int main(int argc, char *argv[]) {
     int n;
     /* dimension of points in kd_tree */
     int d;
+    int balance_flag;
     char *infile;
     char *actionfile;
     FILE *fp1;
     FILE *fp2;
     FILE *of1;
-
-    infile =  argv[1];
+    cout << "argc: " << argc << endl;
+    if (argc > 3) {
+        infile =  argv[1];
+        balance_flag = stoi(argv[3], nullptr, 10);
+    } else {
+        infile = argv[1];
+        balance_flag = stoi(argv[2], nullptr, 10);
+    }
 
     cout << " infile  " << infile << endl;
     fp1 = fopen(infile,"r");
@@ -38,24 +46,49 @@ int main(int argc, char *argv[]) {
     int point[d];
     int points[n][d];
     int already_deleted[n];
+    int already_selected[n];
 
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < d; j++) {
-            fscanf(fp1,"%d",&point[j]);
-            points[i][j] = point[j];
+    if (balance_flag == 0) {
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < d; j++) {
+                fscanf(fp1,"%d",&point[j]);
+                points[i][j] = point[j];
 
-            if (j < d-1)
-                fscanf(fp1, " ");
+                if (j < d-1)
+                    fscanf(fp1, " ");
+            }
+
+            tree_1.insert_node(point);
+
         }
+    } else {
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < d; j++) {
+                fscanf(fp1,"%d",&point[j]);
+                points[i][j] = point[j];
 
-        tree_1.insert_node(point);
-
+                if (j < d-1)
+                    fscanf(fp1, " ");
+            }
+        }
     }
 
-    /* Deletion file interface */
-    actionfile =  argv[2];
+    if (balance_flag != 0) {
+        for (int i = 0; i < n; i++) {
+            if (balance_flag == 1) {
+                /* Quicksort median find */
+            }
+            if (balance_flag == 2) {
+                /* Random Select median find */
+            }
+            if (balance_flag == 3) {
+                /* Select median find */
+            }
+        }
+    }
 
-    if (argv[2] == NULL) {
+
+    if (argv[3] == NULL) {
       for (int i = 0; i < n; i++) {
         int rand_i = (int) ((((float) rand())/RAND_MAX)*n);
         if (already_deleted[rand_i] == 1) {
@@ -67,6 +100,9 @@ int main(int argc, char *argv[]) {
         }
       }
     } else {
+        cout << "NEW!" << endl;
+        /* Deletion file interface */
+        actionfile =  argv[2];
         Node* P;
         cout << " infile  " << actionfile << endl;
         fp2 = fopen(actionfile,"r");
