@@ -74,9 +74,10 @@ int main(int argc, char *argv[]) {
     }
 
     if (balance_flag != 0) {
+        int current_order_statistic = (n-1)/2;
         for (int i = 0; i < n; i++) {
             if (balance_flag == 1) {
-                /* Quicksort median find */
+                /* Quicksort every insertion median find */
             }
             if (balance_flag == 2) {
                 /* Random Select median find */

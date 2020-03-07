@@ -20,7 +20,9 @@ run_simple_long_chain_tests \
 run_simple_lowered_long_chain_tests run_random_data_100 \
 run_random_data_1000 run_random_data_100K run run_random_data_1M \
 run_random_perm_data_100 run_random_perm_data_1000 \
-run_random_perm_data_100K run_random_perm_data_1M
+run_random_perm_data_100K run_random_perm_data_1M \
+#run_quicksort_balanced_trees_on_simple_cases \
+
 
 .o:.cpp	$(MY_INCLUDES)
 	$(CCX)  -c  $(CXXFLAGS) $<
@@ -106,3 +108,23 @@ run_random_perm_data_100K:
 run_random_perm_data_1M:
 	for file in random_dataset_permuted/n_1M/*.txt; \
 	do ./$(TARGET) "$$file" 0; done
+
+run_quicksort_balanced_trees_on_simple_cases: 
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_root.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_leaves.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/from_intermediates.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/null_right_subtree.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_test.txt Handwritten_Test_Cases/s2c_deletion_tests/null_left_subtree.txt 1
+	###
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_root.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_leaves.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/from_intermediates.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_right_subtree.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_long_chain_test.txt Handwritten_Test_Cases/s2lc_deletion_tests/null_left_subtree.txt 1
+	###
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_root.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/top_of_chain_then_middle_of_chain.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_leaves.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/from_intermediates.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/null_right_subtree.txt 1
+	./$(TARGET) Handwritten_Test_Cases/simple_2d_lowered_long_chain_test.txt Handwritten_Test_Cases/s2llc_deletion_tests/null_left_subtree.txt 1
